@@ -1,0 +1,5 @@
+---
+- name: Install Bacula client packages
+  apt: name="{{ item }}" state=present
+  with_items:
+    ["bacula-client", "bacula-common", "bacula-console", "bacula-fd"]

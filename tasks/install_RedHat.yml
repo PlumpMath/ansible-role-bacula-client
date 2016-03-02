@@ -1,0 +1,5 @@
+---
+- name: Install Bacula client packages
+  yum: name="{{ item }}" state=present
+  with_items:
+    ["bacula-client", "bacula-console"]

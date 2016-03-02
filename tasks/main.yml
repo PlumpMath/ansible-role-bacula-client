@@ -1,0 +1,9 @@
+---
+# tasks file for rastandy.bacula-client
+- include: install_Debian.yml
+  when: ansible_pkg_mgr == "apt"
+  tags: [bacula-client, bacula-client-install]
+
+- include: install_Debian.yml
+  when: ansible_pkg_mgr == "yum"
+  tags: [bacula-client, bacula-client-install]
