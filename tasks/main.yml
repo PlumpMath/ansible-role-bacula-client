@@ -4,6 +4,17 @@
   when: ansible_pkg_mgr == "apt"
   tags: [bacula-client, bacula-client-install]
 
-- include: install_Debian.yml
+- include: install_RedHat.yml
   when: ansible_pkg_mgr == "yum"
   tags: [bacula-client, bacula-client-install]
+
+- name: Setup bacula-fd.conf file
+  template: src=bacula-fd.conf.j2 dest=/etc/bacula/bacula-fd.conf owner=root group=root mode=0640
+  notify: Restart bacula-fd daemon
+
+- name: Setup bconsole.conf file
+  template: src=bconsole.conf.j2 dest=/etc/bacula/bconsole.conf owner=root group=root mode=0640
+  notify: Restart bacula-fd daemon
+
+- name: Ensure bacula-fd client is started
+  service: name=bacula-fd state=started enabled=yes

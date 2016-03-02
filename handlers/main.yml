@@ -1,2 +1,5 @@
 ---
 # handlers file for rastandy.bacula-client
+
+- name: Restart bacula-fd daemon
+  service: name=bacula-fd state=restarted

@@ -1,2 +1,4 @@
 ---
 # defaults file for rastandy.bacula-client
+
+bacula_password: "Change me"
