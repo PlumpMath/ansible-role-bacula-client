@@ -16,5 +16,8 @@
   template: src=bconsole.conf.j2 dest=/etc/bacula/bconsole.conf owner=root group=root mode=0640
   notify: Restart bacula-fd daemon
 
+- name: Ensure var/spool directory is present
+  file: path=/var/spool/bacula state=directory mode="u+rwx" owner=bacula
+
 - name: Ensure bacula-fd client is started
   service: name=bacula-fd state=started enabled=yes
